@@ -6,3 +6,4 @@ def main_menu():
             [InlineKeyboardButton("Купить подписку", callback_data="buy")]
         ]
     )
+    return keyboard
