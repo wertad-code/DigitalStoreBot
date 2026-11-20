@@ -8,6 +8,8 @@ from aiogram.enums import ParseMode
 
 from handlers.user import user_router
 
+logging.basicConfig(level=logging.INFO)
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -17,11 +19,11 @@ async def main():
 
     bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher()
-    dp.include_routers(user_router)
+    dp.include_router(user_router)
 
     print ("Run polling...")
     await bot.delete_webhook(drop_pending_updates=True)
-    await dp.run_polling(bot)
+    await dp.start_polling(bot)
 
 
 if __name__ == "__main__":
